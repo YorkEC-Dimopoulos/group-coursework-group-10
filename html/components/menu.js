@@ -1,5 +1,47 @@
 //  <meta name="author" content="Danil Vassilets">
 
+// Get the base path for the project root
+// This works for both local files and GitHub Pages with repository subdirectories
+const getBasePath = () => {
+  const currentPath = window.location.pathname;
+  
+  // For GitHub Pages, find where index.html would be
+  // Look for common project folders to determine depth
+  const pathParts = currentPath.split('/').filter(p => p);
+  
+  // Remove filename if present (ends with .html, .htm, etc.)
+  let hasFile = false;
+  if (pathParts.length > 0 && /\.(html?|php)$/i.test(pathParts[pathParts.length - 1])) {
+    pathParts.pop();
+    hasFile = true;
+  }
+  
+  // Count how deep we are inside project folders (html, students, model_V, etc.)
+  let projectDepth = 0;
+  for (let i = pathParts.length - 1; i >= 0; i--) {
+    const folder = pathParts[i];
+    if (folder === 'html' || folder === 'students' || folder === 'other') {
+      projectDepth = pathParts.length - i;
+      break;
+    } else if (folder === 'model_V' || folder === 'model_K' || 
+               folder === 'model_L' || folder === 'model_MZ' || 
+               folder === 'components') {
+      // These are subfolders, keep looking
+      continue;
+    }
+  }
+  
+  // If we found a project folder, go up that many levels
+  if (projectDepth > 0) {
+    return '../'.repeat(projectDepth);
+  }
+  
+  // Otherwise, we're at root or one level down
+  return hasFile ? './' : './';
+};
+
+const basePath = getBasePath();
+
 const menuBtn = document.querySelector(".menu-btn");
 const sideMenu = document.getElementById("sideMenu");
 const modelImage = document.getElementById("modelImage");
@@ -12,7 +54,42 @@ const techItems = document.querySelectorAll("#menu-tech .model-item");
 const aboutItems = document.querySelectorAll("#menu-about .model-item");
 
 const allItems = [...modelItems, ...techItems, ...aboutItems];
-const DEFAULT_IMG = "/images/logo/preview.jpg";
+const DEFAULT_IMG = basePath + "images/logo/preview.jpg";
+
+// Set correct paths for all images and links on load
+document.addEventListener("DOMContentLoaded", () => {
+  // Fix home link
+  const homeLink = document.getElementById("homeLink");
+  if (homeLink) {
+    homeLink.href = basePath + "index.html";
+  }
+  
+  // Fix contact link
+  const contactLink = document.getElementById("contactLink");
+  if (contactLink) {
+    contactLink.href = basePath + "html/contact_us.html";
+  }
+  
+  // Fix model image default source
+  if (modelImage) {
+    const defaultSrc = modelImage.getAttribute("data-default");
+    if (defaultSrc) {
+      modelImage.src = basePath + defaultSrc;
+    }
+  }
+  
+  // Fix all data-img and data-link attributes
+  document.querySelectorAll(".model-item").forEach(item => {
+    const img = item.getAttribute("data-img");
+    if (img && !img.startsWith("http") && !img.startsWith(basePath)) {
+      item.setAttribute("data-img", basePath + img);
+    }
+    const link = item.getAttribute("data-link");
+    if (link && !link.startsWith("http") && !link.startsWith(basePath)) {
+      item.setAttribute("data-link", basePath + link);
+    }
+  });
+});
 
 const setDefaultImage = () => {
   if (!modelImage) return;

@@ -15,13 +15,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const parallaxBlocks = [...document.querySelectorAll(".parallax")];
   const revealBlocks = [...document.querySelectorAll(".section-inner-body")];
 
+  // Get the base path for the project root
+  const getBasePath = () => {
+    const currentPath = window.location.pathname;
+    const pathParts = currentPath.split('/').filter(p => p);
+    
+    let hasFile = false;
+    if (pathParts.length > 0 && /\.(html?|php)$/i.test(pathParts[pathParts.length - 1])) {
+      pathParts.pop();
+      hasFile = true;
+    }
+    
+    let projectDepth = 0;
+    for (let i = pathParts.length - 1; i >= 0; i--) {
+      const folder = pathParts[i];
+      if (folder === 'html' || folder === 'students' || folder === 'other') {
+        projectDepth = pathParts.length - i;
+        break;
+      } else if (folder === 'model_V' || folder === 'model_K' || 
+                 folder === 'model_L' || folder === 'model_MZ' || 
+                 folder === 'components') {
+        continue;
+      }
+    }
+    
+    if (projectDepth > 0) {
+      return '../'.repeat(projectDepth);
+    }
+    
+    return hasFile ? './' : './';
+  };
+  const basePath = getBasePath();
+
   const BG_MAP = {
-    img1: "/images/models/Model_V/wipe2.png",
-    img2: "/images/models/Model_V/wipe3.png",
-    img3: "/images/models/Model_V/wipe4.jpg",
-    img4: "/images/models/Model_V/wipe5.png",
-    img5: "/images/models/Model_V/wipe1.png",
-    img6: "/images/models/Model_V/model-image3.png",
+    img1: basePath + "images/models/Model_V/wipe2.png",
+    img2: basePath + "images/models/Model_V/wipe3.png",
+    img3: basePath + "images/models/Model_V/wipe4.jpg",
+    img4: basePath + "images/models/Model_V/wipe5.png",
+    img5: basePath + "images/models/Model_V/wipe1.png",
+    img6: basePath + "images/models/Model_V/model-image3.png",
   }; 
 
   Object.values(BG_MAP).forEach(src => {

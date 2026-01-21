@@ -1,4 +1,4 @@
-# Ignore all videos
-images/videos/
+# Videos are now tracked - removed from gitignore to deploy to GitHub Pages
+# images/videos/
 
   

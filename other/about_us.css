@@ -1,0 +1,101 @@
+@import url('./style.css');
+
+body {
+    font-family: 'Share Tech', sans-serif;
+    min-height: 100vh; 
+    margin: 0;
+    background-color: #1B3C53;
+    display: block;
+}
+
+.page-wrapper { 
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h2,h1
+{
+    text-align:center;
+}
+
+h1#name {
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+p.description {
+    font-size: 20px;
+    margin-bottom: 25px;
+  
+}
+
+.team-header {
+    max-width: 1100px;
+    margin: 0 auto 25px;
+    text-align: left;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1100px;
+    margin: auto;
+    align-items: stretch;
+    margin-bottom: 40px; 
+}
+
+.about-card {
+    background-color: #234C6A;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+.about-text {
+    text-align: left;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 0 auto 15px;
+    background-color: #1B3C53;
+}
+
+.avatar:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+.see-more-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #456882;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 0;
+}
+
+.see-more-button:hover {
+    background-color: #365369;
+}
+
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,52 @@
+@import url('style.css');
+
+/* Stuff I always forget: .class, #id */
+
+
+body {
+    margin: 0 auto; 
+ 
+    color: #d2c1b6;
+    font-size: large;
+    max-width: 80%;
+    font-family: "DM Serif Text", serif;
+}
+
+ 
+.container {
+    margin-top: 125px;
+    margin-bottom: 10px;
+    
+    text-align: center;
+      
+}
+
+
+ul li {
+    list-style: none;
+}
+
+p{
+    padding: 24px;
+       
+}
+
+
+p.description {
+    display: none;
+}
+
+li {
+    display: inline;
+}
+
+.picture {
+    max-width: 500px;
+    max-height: 200px;
+    display: inline;
+}
+
+div#descriptions {
+    display: flexbox;
+    flex-direction: row;
+}

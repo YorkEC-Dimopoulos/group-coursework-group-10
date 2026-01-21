@@ -1,0 +1,392 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+.hero {
+  position: relative;
+  height: 140vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 96%;
+  height: 100%;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%) scale(1.05);
+  object-fit: cover;
+  z-index: -2;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.95)
+  );
+  z-index: -1;
+}
+
+.hero-content {
+  position: absolute;
+  left: 50%;
+  bottom: -10vh;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero-logo {
+  width: 800px;
+  max-width: 60vw;
+  filter: brightness(0) invert(1)
+    drop-shadow(0 8px 16px rgba(59, 134, 171, 0.8));
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.03em;
+  margin-top: -120px;
+  margin-bottom: 220px;
+}
+
+.hero-line {
+  width: 1px;
+  height: 100px;
+  background: #fff;
+  margin-top: -170px;
+  opacity: 0;
+  animation: lineFadeUp 1.2s ease forwards,
+    lineLoop 1.6s ease-in-out infinite 1.2s;
+  position: relative;
+}
+
+.hero-tagline {
+  font-size: 34px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  font-family: "Playfair Display", serif;
+  margin-top: 123px;
+}
+
+
+
+.wipe-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+}
+
+.wipe-bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  will-change: clip-path, opacity;
+}
+
+#wipe-current {
+  z-index: 1;
+}
+
+#wipe-next {
+  z-index: 2;
+  clip-path: inset(100% 0 0 0);
+}
+
+.wipe-main {
+  position: relative;
+  background: transparent;
+}
+
+
+.wipe-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 6vw;
+  z-index: 1;
+}
+ 
+.wipe-bg-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.section-inner {
+  max-width: 900px;
+  z-index: 1;
+}
+
+.section-inner-centered {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-inner-left.section-inner-centered {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.section-inner-right.section-inner-centered {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.section-inner-body {
+  opacity: 0;
+  transform: translateY(var(--floatY, 40px));
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  
+}
+
+.section-inner-body.is-visible {
+  opacity: 1;
+}
+
+.section-kicker {
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+}
+
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 6vw, 72px);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 18px auto;
+  max-width: 700px;
+  text-align: center;
+}
+
+.section-text {
+  font-size: 18px;
+  max-width: 700px;
+  line-height: 1.7;
+  color: #e5e5e5;
+  margin: 0 auto;
+  text-align: center;
+}
+ 
+.gallery {
+  padding: 120px 6vw;
+  background: rgb(2, 3, 8);
+}
+
+.gallery-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-header {
+  margin-bottom: 32px;
+}
+
+.gallery-kicker {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  opacity: 0.7;
+}
+
+.gallery-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-top: 10px;
+}
+
+.gallery-viewport {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gallery-track {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  border-radius: 18px;
+  height: 700px;
+}
+
+.gallery-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gallery-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.gallery-nav:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.gallery-dots {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  justify-content: center;
+}
+
+.gallery-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, width 0.2s ease;
+}
+
+.gallery-dot.is-active {
+  background: #fff;
+  width: 18px;
+}
+
+.tech {
+  padding: 120px 6vw;
+  background: radial-gradient(circle at top, #111 0, #000 55%);
+}
+
+.tech-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.tech-header {
+  margin-bottom: 40px;
+}
+
+.tech-kicker {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  opacity: 0.7;
+}
+
+.tech-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-top: 10px;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 40px;
+  margin-top: 32px;
+}
+
+.tech-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 16px;
+}
+
+.tech-label {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+
+.tech-value {
+  font-size: 18px;
+}
+
+@keyframes lineFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineLoop {
+  0% {
+    clip-path: inset(0 0 100% 0);
+  }
+  25% {
+    clip-path: inset(0 0 0 0);
+  }
+  45% {
+    clip-path: inset(0 0 0 0);
+  }
+  75% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+}

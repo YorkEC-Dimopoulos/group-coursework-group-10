@@ -1,0 +1,30 @@
+@import url('style.css');
+
+/* Stuff I always forget: .class, #id */
+body {
+    margin: 0 auto; 
+ 
+    color: #d2c1b6;
+    font-size: large;
+    max-width: 80%;
+    font-family: "DM Serif Text", serif;
+}
+
+ 
+.container {
+    margin-top: 125px;
+    margin-bottom: 10px;
+    
+    text-align: center;
+      
+}
+
+h2 {
+    text-transform: uppercase;
+    padding: 50px;
+}
+
+.intext {
+    list-style: none;
+    border-top: 1px dashed #d2c1b6;
+}

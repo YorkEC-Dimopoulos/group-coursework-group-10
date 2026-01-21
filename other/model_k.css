@@ -1,0 +1,69 @@
+/* Stuff I always forget: .class, #id */
+@import url('style.css');
+
+body {
+    margin: 0 auto; 
+ 
+    color: #d2c1b6;
+    font-size: large;
+    max-width: 80%;
+    font-family: "DM Serif Text", serif;
+}
+
+ 
+.container {
+    margin-top: 125px;
+    margin-bottom: 10px;
+    
+    text-align: center;
+      
+}
+
+table,
+th,
+td {
+    border: 2px solid #456882;
+}
+
+.afterTable {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+h1#header {
+    text-transform: uppercase;
+    margin-bottom: 1px;
+}
+
+p#description {
+    margin-top: 1px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.captial {
+    text-transform: uppercase;
+    padding-top: 5px;
+}
+
+#footer {
+    margin-top: 45px;
+}
+
+img {
+    width: 785px;
+}
+
+img.half {
+    width: 500px;
+    height: 250px;
+    display: inline-flexbox;
+}
+
+ p {
+    padding: 20px;
+ }
+ .specs {
+    margin-left:12.5%;
+ }

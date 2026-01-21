@@ -1,0 +1,35 @@
+/* Stuff I always forget: .class, #id */
+
+@import url('style.css');
+
+.container{
+    padding-top: 150px;
+}
+
+.warranty h1 {
+    font-weight: bold;
+    font-size: large;
+    text-transform: uppercase;
+}
+
+.warranty #footer {
+    margin-top: 15px;
+    margin-bottom: 2px;
+    display: flex;
+    width: 400px;
+}
+
+.quarter {
+    max-width: 940px;
+    height: 512px;
+}
+
+p {
+    display: none;
+}
+
+p#instructions {
+    display: block;
+    font-size: large;
+    font-weight: bold;
+}

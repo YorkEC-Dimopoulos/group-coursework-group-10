@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Customer Reviews</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="../other/petros.css">
+        <link rel="stylesheet" href="/html/components/menu.css">
+ 
+        </style>
+    </head>
+    <body>
+        <section class="container">
+            <h1 id="header">
+                Customer Reviews
+            </h1>
+            <p id="description">
+                See what the experts and our customers are saying about the Group 10 Electric Fleet.
+            </p>
+            <hr>
+
+            <h3 class="capital">
+                "The King of SUVs" - AutoWeekly
+            </h3>
+            <img src="../images/models/Model_K/model_k_exterior_f.jpg" alt="Model K Front" class="half">
+            <p>
+                The Model K combines raw power (520 HP) with an ultra-luxurious velvet interior. 
+                The 3D logo and LED Matrix lights make it unmistakable on the road. It defines a new era 
+                of luxury electric travel.
+            </p>
+            <p><b>Rating: ★★★★★</b></p>
+            <br>
+
+            <h3 class="capital">
+                "Reliability First" - Daily Drive
+            </h3>
+            <img src="../images/models/Model_V/model-image3.png" alt="Model P Exterior" class="half">
+            <p>
+                With an 11-year battery warranty, Model P is the most sensible choice for long-term owners. 
+                It may not be as fast as the K, but it is built to last and offers exceptional value for money.
+            </p>
+            <p><b>Rating: ★★★★☆</b></p>
+            <br>
+
+            <h3 class="capital">
+                "A Computer on Wheels" - Tech Radar
+            </h3>
+            <p>
+                The operating system in the new Group 10 fleet is flawless. The Over-the-Air (OTA) updates 
+                have already added two new driving modes since we started our long-term test. 
+                The interface is snappy, intuitive, and the voice assistant actually understands accents!
+            </p>
+            <p><b>Rating: ★★★★★</b></p>
+            <br>
+
+            <h3 class="capital">
+                "Best family car I've owned" - Sarah J.
+            </h3>
+            <p>
+                We switched to the Group 10 Electric Fleet last year and haven't looked back. 
+                Charging at home is so convenient, and the kids love the spacious back seats.
+            </p>
+            <p><b>Rating: ★★★★★</b></p>
+            <br>
+
+            <h3 class="capital">
+                "Cross-Continent Champion" - Mark D.
+            </h3>
+            <p>
+                I just drove my Model K from Thessaloniki to Vienna. I was worried about charging stops, 
+                but the navigation planned everything perfectly. The seats remained comfortable even 
+                after 10 hours of driving.
+            </p>
+            <p><b>Rating: ★★★★★</b></p>
+
+            <hr>
+
+            <h1 id="header">
+                Leave a Review
+            </h1>
+            <p>
+                Have you driven one of our cars? Share your experience below.
+            </p>
+
+            <form>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="John Doe">
+
+                <label for="car-model">Which model did you drive?</label>
+                <select id="car-model" name="car-model">
+                    <option value="model-k">Model K</option>
+                    <option value="model-p">Model P</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="rating">Rating (1-5):</label>
+                <input type="number" id="rating" name="rating" min="1" max="5" placeholder="5">
+
+                <label for="review-text">Your Review:</label>
+                <textarea id="review-text" name="review-text" rows="4" placeholder="Write your thoughts here..."></textarea>
+
+                <button type="button" onclick="alert('Thank you! Your review has been submitted.')">
+                    Submit Review
+                </button>
+            </form>
+            
+            <br><br>
+        </section>
+
+        <footer id="footer" style="position: relative;">
+            <hr>
+            Made by Group 10
+            <br>
+            <details>
+                <summary>Author</summary>
+                This page was authored by Petros [Insert Your Last Name]
+            </details>
+        </footer>
+    <script src="/html/components/menu-loader.js" defer></script>
+    </body>
+</html>

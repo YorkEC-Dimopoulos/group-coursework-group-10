@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Spare Parts</title>
+        <link rel="stylesheet" href="../other/spare_parts.css">
+        <link rel="stylesheet" href="/html/components/menu.css">
+        <meta charset="utf-8">
+        <meta name="author" content="Konstantinos Granis">
+        <meta name="description" content="This page includes spare parts for all Group X models">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="../other/spare_parts.js" defer></script>
+    </head>
+    <body>
+        <section class="container">
+            <h1 id="title">
+                Spare Parts
+            </h1>
+            <hr>
+            <p id="introduction">
+                Here you can view the available spare parts for our electric car models.<br>
+                The spare parts are <!-- maybe change this --> compatible with all our models,
+                with the exception of the Interior Care Kit - which is exclusive to
+                our high-class SUV model K.
+            </p>
+            <!-- I hope the user has enough memory to know which image they clicked because 
+             making this user friendly is not developer-friendly 🥲-->
+            <ul id="spare-parts">
+                <li class="part">
+                    <img class="picture" src="../images/models/Model_K/maintenance_kit.jpg" 
+                    id="maintenance" onclick="showDescription(this.id)">
+                </li>
+                <li class="part">
+                    <img class="picture" src="../images/models/Model_K//emergency_kit.jpg" 
+                    id="emergency" onclick="showDescription(this.id)">
+                </li>
+                <li class="part">
+                    <img class="picture" src="../images/models/Model_K/interior_kit.jpg" 
+                    id="interior" onclick="showDescription(this.id)">
+                </li>
+            </ul>
+            <div id="descriptions">
+                <p class="description" id="maintenance-text">
+                    The maintenance kit is mostly comprised of consumables like a set
+                    of 2 Cabin HEPA filters, an Aero-Blade Wheel Inserts replacement
+                    pack, and a 12V Lithium-Ion Battery, to make sure your car always
+                    runs in top condition.
+                </p>
+                <p class="description" id="emergency-text">
+                    The emergency kit is equipped with a foldable warning triangle,
+                    2 High-Visibility vests, a Tire Sealant & Compressor, a Mobile Connector
+                    to charge your car wherever you are, and a 7m Type 2 to Type 2 Charging Cable,
+                    allowing you to use public chargers even if there's someone parked in front of them.
+                </p>
+                <p class="description" id="interior-text">
+                    The interior care kit offers the ultimate luxury in your model K, by giving you
+                    all the things you need to take care of the Red Velvet leather seats, the dashboard,
+                    and the internal screens, without damaging any part of the car.<br>
+                    The screen cleaning solution is amonia-free, in order to preserve the anti-glare
+                    coating of all the screens in the interior of the car.
+                </p>
+            </div>
+        </section>
+        <footer id="footer">
+            <hr>
+            Made by Group 10
+            <br>
+            <details>
+                <summary>Author</summary>
+                This page was authored by Konstantinos Granis
+            </details>
+        </footer>
+    <script src="/html/components/menu-loader.js" defer></script>
+    </body>
+</html>

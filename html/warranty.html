@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Warranty Page
+        </title>
+        <link rel="stylesheet" href="../other/warranty.css">
+        <link rel="stylesheet" href="/html/components/menu.css">
+        <script src="../other/warranty.js"></script>
+        <meta name="author" content="Konstantinos Granis">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <section class="container">
+            <h1>
+                Our Warranty
+            </h1>
+            <hr>
+            <p id="instructions">Click on a picture in order to see the warranty information for that model.</p><br>
+            <!-- Display all models and depending on what the user clicks, put the relevant info below (JS) -->
+            <img class="quarter" src="../images/models/Model_K/model_k_exterior_f.jpg" id="K" onclick="link(this.id)">
+            <img class="quarter" src="../images/models/Model_L/lna.png" id="S" onclick="link(this.id)">  
+            <img class="quarter" src="../images/models/Model_MZ/model_MZ_exterior_front.png" id="Z" onclick="link(this.id)">
+            <img class="quarter" src="../images/models/Model_V/model-image3.png" id="D" onclick="link(this.id)">
+            <hr>
+            <p id="KT">
+                <b>11 years battery replacement and electric motor warranty</b>
+                <br>
+                <b>3 years general factory warranty</b>
+                <br>
+                <b>7 years crystals warranty</b>
+            </p>
+            <p id="ST">
+                <!-- Warranty for Strahinja's model-->
+                <b>10 years battery replacement and electric motor warranty</b>
+                <br>
+                <b>3 years general factory warranty</b>
+                <br>
+                <b>7 years crystals warranty</b>
+            </p>
+            <p id="ZT">
+                <!-- Zdravko's model-->
+                <b>9 years battery replacement and electric motor warranty</b>
+                <br>
+                <b>3 years general factory warranty</b>
+                <br>
+                <b>7 years crystals warranty</b>
+            </p>
+            <p id="PT">
+                <!-- Petros' model-->
+                <b>11 years battery replacement and electric motor warranty</b>
+                <br>
+                <b>3 years general factory warranty</b>
+                <br>
+                <b>8 years crystals warranty</b>
+            </p>
+            <p id="DT">
+                <!-- Danil's model-->
+                <b>11 years battery replacement and electric motor warranty</b>
+                <br>
+                <b>4 years general factory warranty</b>
+                <br>
+                <b>7 years crystals warranty</b>
+            </p>
+        </section>
+        <footer id="footer">
+            Made by Group 10<br>
+            <details>
+                <summary>Author</summary>
+                Authored by Konstantinos Granis
+            </details>
+        </footer>
+    <script src="/html/components/menu-loader.js" defer></script>
+    </body>
+</html>

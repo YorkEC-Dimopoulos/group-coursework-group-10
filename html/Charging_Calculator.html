@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+
+    <title>Charging Calculator</title>
+    <link rel="stylesheet" href="/html/components/menu.css">
+    <link rel="stylesheet" href="../other/Charging_Calculator_Style.css">
+ 
+    
+</head>
+
+<body>
+    <section class="container"> 
+    <div class="calculator">
+        <h1>Charging Calculator</h1>
+        <hr>
+
+        <input type="number" id="kwh" placeholder="Enter Battery Capacity (kWh)">
+        <input type="number" id="kw" placeholder="Enter Charging Power (kW)">
+
+        <button onclick="calculate(true)">Calculate (HH:MM)</button>
+        <button onclick="calculate(false)">Calculate (Hours)</button>
+
+        <p>
+            Result:
+            <span id="result"></span>
+        </p>
+    </div>
+ 
+    <!-- Credits -->
+    <div class="footer">
+        <footer id="footer">
+            <hr>
+            Made by Group 10<br>
+
+            <details>
+                <summary>Author</summary>
+                This page was authored by Strahinja Trajković
+            </details>
+        </footer>
+    </div>
+    </section>
+    <script src="../other/charging_calculator.js"></script> 
+    <script src="/html/components/menu-loader.js"></script>
+</body>
+</html>
+
+<!--This code was authored by Strahinja Trajković--> 

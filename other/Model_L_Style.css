@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+
+body {
+    margin: 0 auto; 
+    background-color: #1b3c53;
+    color: #d2c1b6;
+    font-size: large;
+    max-width: 80%;
+    font-family: "DM Serif Text", serif;
+}
+
+ .container {
+    padding-top: 150px;
+    text-align: center;  
+} 
+
+.middle-tab { 
+    margin-left: 25%;
+}
+
+
+
+th,
+td{
+    border: 1px solid #4E71FF;
+    font-family:'Share Tech',sans-serif;
+}
+
+.b{
+    padding:10px; 
+    text-align:left;
+    font-family:'Share Tech',sans-serif;
+}
+
+.d{
+    padding:20px;
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
+}   
+
+    
+h1,
+h2,
+h3{
+    font-size:170%;
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: italic; 
+}
+
+p{
+    font-size:150%;
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+li{
+    font-size:135%;
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-left: 22px;
+}
+
+iframe{
+    width:533px;
+    height:400px;
+    margin-left: 5%;
+}
+
+ 
+ 
+
+/* This code was authored by Strahinja Trajković */

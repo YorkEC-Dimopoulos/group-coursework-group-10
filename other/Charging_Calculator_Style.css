@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+
+ body {
+    max-width: 50%;
+    margin: 0 auto; 
+    background-color: #1b3c53;
+    color: #d2c1b6;
+    font-size: large;
+    max-width: 50%;
+    font-family: "DM Serif Text", serif;
+}
+
+ .container {
+    padding-top: 150px;
+    text-align: center;  
+} 
+
+
+h1 {
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: italic;
+    }
+        
+
+.footer {
+    padding-top: 63%;
+}
+        
+p {
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+    
+ 
+/* This code was authored by Strahinja Trajković */

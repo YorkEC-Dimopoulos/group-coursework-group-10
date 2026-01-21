@@ -1,0 +1,135 @@
+@import url('./style.css');
+
+:root {
+  --c1: #5409DA;
+  --c2: #4E71FF;
+  --c3: #8DD8FF;
+  --c4: #BBFBFF;
+  --c5: #ebe3a2;
+  --color-accent: #4E71FF;
+  --color-muted: #b5b5b5;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.spec-section {
+    margin-bottom: 45px;
+}
+
+.spec-section h2 {
+    font-size: 28px;
+    color: var(--c3);
+    margin-bottom: 15px;
+}
+
+.spec-section p {
+    font-size: 25px;
+    line-height: 1.6;
+}
+
+.spec-list {
+    font-size: 25px;
+    padding-left: 20px;
+}
+
+.spec-list li {
+    margin-bottom: 10px;
+}
+
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 25px;
+}
+
+.spec-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+}
+
+.modes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modes input[type="checkbox"] {
+    display: none;
+}
+
+.mode-button {
+    padding: 10px 22px;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 5px;
+}
+
+.mode-button:hover {
+    background-color: var(--c1);
+    transform: translateY(-2px);
+}
+
+.mode-panel {
+    max-height: 0;
+    overflow: hidden;
+    background-color: var(--c2);
+  
+    padding: 0 15px;
+    margin-bottom: 10px;
+    border-left: 3px solid #3ae445;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+.mode-panel li {
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+/* Show panel when checkbox is checked */
+.modes input[type="checkbox"]:checked + .mode-button + .mode-panel {
+    max-height: 500px;
+    padding: 15px;
+}
+
+.mode-panel h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: #3ae445;
+}
+
+.more-button-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.more-button {
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 25px;
+    background-color: var(--c3);
+    color: rgb(5, 6, 7);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    text-align: center;
+    max-width: 300px;
+}
+
+.more-button:hover {
+    background-color: var(--c2);
+    transform: translateY(-2px);
+}

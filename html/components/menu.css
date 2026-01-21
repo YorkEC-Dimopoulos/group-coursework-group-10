@@ -1,0 +1,572 @@
+@import url('../../other/style.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+  --font-tech: 'Orbitron', sans-serif;
+  --font-nabla: 'Nabla', cursive;
+
+  --c1: #5409DA;
+  --c2: #4E71FF;
+  --c3: #8DD8FF;
+  --c4: #BBFBFF;
+  --c5: #ebe3a2;
+
+  --bg-main: #050509;
+  --bg-soft: #111;
+
+  --color-accent: #4E71FF;
+  --color-muted: #b5b5b5;
+
+  --transition: 0.4s ease;
+}
+
+header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 70px;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.left-btn,
+.right-btn {
+  display: flex;
+  align-items: center;
+}
+
+.logo-btn {
+  position: relative;
+  top: 45px;
+  left: 13px;
+  font-size: 35px;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+  font-family: var(--font-nabla);
+}
+
+.logo-btn:hover {
+  color: var(--c3);
+  transform: scale(1.1);
+}
+
+body.menu-open .logo-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+ body.menu-open::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(10px); 
+  background: radial-gradient(circle at top, rgba(0,0,0,0.7), rgba(0,0,0,0.95));
+  z-index: 400;
+}
+
+/* Menu right => Hamburger button*/
+.menu-btn {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  top: 51px;
+  right: 53px;
+  z-index: 3000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 50%;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* Hamburger lines */
+.menu-btn::before,
+.menu-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 30px;
+  height: 6px;
+  background: currentColor;
+  transform-origin: center;
+  transform: translateX(-50%);
+  transition: transform var(--transition), width var(--transition), height var(--transition), background-color var(--transition);
+}
+
+.menu-btn::before {
+  top: 50%;
+  transform: translate(-50%, -6px);
+}
+
+.menu-btn::after {
+  top: 50%;
+  transform: translate(-50%, 6px);
+}
+
+.menu-btn:not(.active):hover {
+  color: var(--c3);
+}
+
+/* Turns hamburger into "X" icon */
+.menu-btn.active {
+  background: rgba(255, 255, 255, 0.10);
+  color: #fff;
+  width: 54px;
+  height: 54px;
+}
+
+.menu-btn.active:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--c3);
+}
+
+.menu-btn.active::before,
+.menu-btn.active::after {
+  width: 18px;
+  height: 3px;
+}
+
+.menu-btn.active::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.menu-btn.active::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Side menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: scale(1.05);  
+  z-index: 500;
+}
+
+.side-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* Left  (Image Preview)*/
+.menu-left {
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(circle at center, #151525, #050509);
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.8);
+}
+
+.model-preview {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.model-preview img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  /* object-fit: contain; */
+}
+
+.model-preview img.visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  filter: brightness(1) contrast(1);
+}
+
+/* Right */
+.menu-right {
+  width: 50%;
+  height: 100%;
+  padding: 40px 30px;
+  background: radial-gradient(circle at top, #202030 0, #050509 55%, #000 100%);
+  border-left: 1px solid rgba(255,255,255,0.08);
+  box-shadow: -10px 0 40px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.side-menu.open .menu-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Tabs */
+.menu-tabs {
+  margin-left: 30px;
+  margin-top: 10px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.menu-tab {
+  font-weight: 500;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.menu-tab.active {
+  padding: 16px 16px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #000000;
+}
+
+.menu-tab:not(.active):hover {
+  color: var(--color-accent);
+}
+
+/* Menu Sectons */
+.menu-sections {
+  margin-top: 40px;
+  padding-left: 30px;
+}
+
+.menu-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  display: none;
+}
+
+.menu-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-text {
+  font-size: 16px;
+  color: var(--color-muted);
+  max-width: 420px;
+  line-height: 1.6;
+}
+
+
+/* Model List */
+.model-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  align-items: flex-start;
+}
+
+.model-item {
+  font-size: 50px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  font-family: var(--font-tech);
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: inline-block;
+}
+
+.model-item:hover {
+   color: var(--c5);
+   /* color: var(--color-accent); */
+} 
+
+.model-item.active {
+  color: var(--c3);
+  text-shadow: 0 0 14px rgba(141,216,255,0.9);
+}
+
+
+.logo-btn {
+  position: relative;
+  top: 45px;
+  left: 13px;
+  font-size: 35px;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+  font-family: var(--font-nabla);
+}
+
+.logo-btn:hover {
+  color: var(--c3);
+  transform: scale(1.1);
+}
+
+body.menu-open .logo-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.menu-open::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(10px);
+  background: radial-gradient(circle at top, rgba(0,0,0,0.7), rgba(0,0,0,0.95));
+  z-index: 400;
+}
+
+/* Menu right => Hamburger button */
+.menu-btn {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  top: 51px;
+  right: 53px;
+  z-index: 3000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 50%;
+  transition: background var(--transition), color var(--transition);
+}
+/* Hamburger lines  */
+.menu-btn::before,
+.menu-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 30px;
+  height: 6px;
+  background: currentColor;
+  transform-origin: center;
+  transform: translateX(-50%);
+  transition: transform var(--transition), width var(--transition), height var(--transition), background-color var(--transition);
+}
+
+.menu-btn::before {
+  top: 50%;
+  transform: translate(-50%, -6px);
+}
+
+.menu-btn::after {
+  top: 50%;
+  transform: translate(-50%, 6px);
+}
+
+.menu-btn:not(.active):hover {
+  color: var(--c3);
+}
+
+/* Turns hamburger into "X" icon */
+.menu-btn.active {
+  background: rgba(255, 255, 255, 0.10);
+  color: #fff;
+  width: 54px;
+  height: 54px;
+}
+
+.menu-btn.active:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--c3);
+}
+
+.menu-btn.active::before,
+.menu-btn.active::after {
+  width: 18px;
+  height: 3px;
+}
+
+.menu-btn.active::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.menu-btn.active::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Side menu*/
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: scale(1.05);
+  z-index: 500;
+}
+
+.side-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* Left  (Image Preview) */
+.menu-left {
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(circle at center, #151525, #050509);
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.8);
+}
+
+.model-preview {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.model-preview img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.model-preview img.visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  filter: brightness(1) contrast(1);
+}
+
+/* RIGHT PANEL */
+.menu-right {
+  width: 50%;
+  height: 100%;
+  padding: 40px 30px;
+  background: radial-gradient(circle at top, #202030 0, #050509 55%, #000 100%);
+  border-left: 1px solid rgba(255,255,255,0.08);
+  box-shadow: -10px 0 40px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.side-menu.open .menu-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* TABS */
+.menu-tabs {
+  margin-left: 30px;
+  margin-top: 10px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.menu-tab {
+  font-weight: 500;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.menu-tab.active {
+  padding: 16px 16px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #000000;
+}
+
+.menu-tab:not(.active):hover {
+  color: var(--color-accent);
+}
+
+/* MENU SECTIONS */
+.menu-sections {
+  margin-top: 40px;
+  padding-left: 30px;
+}
+
+.menu-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  display: none;
+}
+
+.menu-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MODEL LIST */
+.model-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  align-items: flex-start;
+}
+
+.model-item {
+  font-size: 50px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  font-family: var(--font-tech);
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: inline-block;
+}
+
+.model-item:hover {
+  color: var(--c5);
+}
+
+.model-item.active {
+  color: var(--c3);
+  text-shadow: 0 0 14px rgba(141,216,255,0.9);
+}
